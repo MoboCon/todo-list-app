@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster - Easy To-Do List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" />
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <h1>TaskMaster</h1>
+            </div>
+            <button id="dark-mode-toggle" class="dark-mode-toggle" title="Toggle Dark Mode">
+                <!-- SVG icons for dark mode toggle -->
+                <svg id="sun-icon" viewBox="0 0 24 24"><path d="M12 4V2M12 22v-2M5.64 5.64l-1.42-1.42M19.78 19.78l-1.42-1.42M2 12H4m18 0h-2M5.64 18.36l-1.42 1.42M19.78 4.22l-1.42 1.42"/></svg>
+                <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 21a9 9 0 009-8.21z"/></svg>
+            </button>
+        </header>
+
+        <!-- New Position for Statistics -->
+        <section class="stats-section">
+            <div class="stats-container" id="stats">
+                <div class="stat-item">
+                    <p>Tasks Completed</p>
+                    <p class="stat-number" id="completed-tasks">0</p>
+                </div>
+                <div class="stat-item">
+                    <p>Active Tasks</p>
+                    <p class="stat-number" id="active-tasks">0</p>
+                </div>
+                <div class="stat-item">
+                    <p>Total Tasks</p>
+                    <p class="stat-number" id="total-tasks">0</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-container">
+            <aside class="sidebar">
+                <div class="task-form">
+                    <h2>Add New Task</h2>
+                    <input type="text" id="new-task" placeholder="Task title" required>
+                    <textarea id="task-desc" placeholder="Task description (optional)"></textarea>
+                    <input type="date" id="task-date" title="Task Due Date">
+                    <select id="task-priority" title="Task Priority">
+                        <option value="low">Low Priority</option>
+                        <option value="medium">Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                    <button class="quick-action" type="submit">Add Task</button>
+                </div>
+
+                <div class="filters">
+                    <h2>Filter Tasks</h2>
+                    <button class="filter active" data-filter="all">All Tasks</button>
+                    <button class="filter" data-filter="active">Active</button>
+                    <button class="filter" data-filter="completed">Completed</button>
+                </div>
+            </aside>
+            <main class="tasks-display">
+                <h2>Your Tasks</h2>
+                <ul id="todo-list"></ul>
+            </main>
+        </div>
+
+        <!-- Completion Rate and Calendar Sections -->
+        <section class="completion-rate-section">
+            <div class="completion-rate-container">
+                <div class="completion-rate-circle">
+                    <span id="completion-rate-percentage">0%</span>
+                </div>
+            </div>
+        </section>
+
+        <div id="calendar-container">
+            <div id="calendar"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+</body>
+</html>
